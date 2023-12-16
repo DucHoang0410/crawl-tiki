@@ -54,20 +54,21 @@ headers = {
 }
 
 params = {
-    'limit': '48',
-    'include': 'sale-attrs,badges,product_links,brand,category,stock_item,advertisement',
-    'aggregations': '1',
-    'trackity_id': '70e316b0-96f2-dbe1-a2ed-43ff60419991',
-    'category': '1883',
+    'limit': '40',
+    'include': 'advertisement',
+    'aggregations': '2',
+    'version': 'home-persionalized',
+    'trackity_id': '0c25bde9-ba4a-48a5-194e-e25ee6a80976',
+    'category': '1703',
     'page': '1',
-    'src': 'c1883',
-    'urlKey':  'nha-cua-doi-song',
+    'src': 'c1703',
+    'urlKey':  'giay-dep-nu',
 }
 
 product_id = []
 for i in range(1, 11):
     params['page'] = i
-    response = requests.get('https://tiki.vn/api/v2/products', headers=headers, params=params)#, cookies=cookies)
+    response = requests.get('https://tiki.vn/api/personalish/v1/blocks/listings', headers=headers, params=params)#, cookies=cookies)
     if response.status_code == 200:
         print('request success!!!')
         for record in response.json().get('data'):
@@ -75,4 +76,4 @@ for i in range(1, 11):
     time.sleep(random.randrange(3, 10))
 
 df = pd.DataFrame(product_id)
-df.to_csv('product_id_ncds.csv', index=False)
+df.to_csv('product_id_gdn.csv', index=False)
