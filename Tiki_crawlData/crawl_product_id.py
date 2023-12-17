@@ -66,7 +66,7 @@ params = {
 }
 
 product_id = []
-for i in range(1, 11):
+for i in range(1, 50):
     params['page'] = i
     response = requests.get('https://tiki.vn/api/personalish/v1/blocks/listings', headers=headers, params=params)#, cookies=cookies)
     if response.status_code == 200:
@@ -76,4 +76,4 @@ for i in range(1, 11):
     time.sleep(random.randrange(3, 10))
 
 df = pd.DataFrame(product_id)
-df.to_csv('product_id_gdn.csv', index=False)
+df.to_csv('product_id_gdn4.csv', index=False)

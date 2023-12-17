@@ -82,7 +82,7 @@ def parser_product(json):
     return d
 
 
-df_id = pd.read_csv('product_id_gdn.csv')
+df_id = pd.read_csv('product_id_gdn4.csv')
 p_ids = df_id.id.to_list()
 print(p_ids)
 result = []
@@ -93,4 +93,4 @@ for pid in tqdm(p_ids, total=len(p_ids)):
         result.append(parser_product(response.json()))
     time.sleep(random.randrange(3, 10))
 df_product = pd.DataFrame(result)
-df_product.to_csv('crawled_data_gdn.csv', index=False)
+df_product.to_csv('crawled_data_gdn4.csv', index=False)
